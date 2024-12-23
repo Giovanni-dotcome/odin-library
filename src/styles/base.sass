@@ -1,7 +1,8 @@
-@mixin typo($color: --primary, $fontWeight: normal, $fontSize: 1rem)
+@mixin typo($color: --primary, $fontWeight: normal, $fontSize: 1rem, $style:normal)
   font-size: $fontSize
   font-weight: $fontWeight
   color: var($color)
+  font-style: $style
 
 %typoShare
   margin: 0
@@ -12,9 +13,16 @@ body
   font-family: Roboto, sans-serif
   background-color: var(--background)
 
+header
+  background-color: var(--primary)
+  padding: var(--spacing)
+
+main
+  padding: var(--spacing)
+
 h1
   @extend %typoShare
-  @include typo(--white, bold, 4rem)
+  @include typo(--white, bold, 3rem)
 
 h2
   @extend %typoShare
@@ -27,3 +35,7 @@ h3
 h4
   @extend %typoShare
   @include typo()
+
+img
+  width: 2.5rem
+  height: 2.5rem

@@ -1,0 +1,30 @@
+@use "sass:math"
+
+.add-book-background
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: #000
+  opacity: .5
+  z-index: 1
+  justify-content: center
+  align-items: center
+
+.no-scroll
+  overflow: hidden
+
+.add-book-form
+  opacity: 1
+  position: fixed
+  top: calc(50% - 290px/2)
+  left: calc(50% - 443px/2)
+  z-index: 2
+  &:hover
+    cursor: default
+    transform: none
+  .details, .read
+    display: flex
+    flex-direction: column
+    gap: 0.25rem

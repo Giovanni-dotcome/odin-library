@@ -9,6 +9,11 @@
   padding: 0
   line-height: 1
 
+%interactionEffect
+  &:hover
+    cursor: pointer
+    transform: scale(1.1)
+
 body
   font-family: Roboto, sans-serif
   background-color: var(--background)
@@ -21,7 +26,7 @@ main
   padding: var(--spacing)
   display: grid
   grid-template-columns: repeat(auto-fit, 443px)
-  gap: 2rem
+  gap: 3rem
   justify-content: center
   align-content: center
 
@@ -44,3 +49,18 @@ h4
 img
   width: 2.5rem
   height: 2.5rem
+
+.hidden
+  visibility: hidden
+
+input
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25)
+  border-radius: 15px
+  border: none
+  [type="text"]
+    all: unset
+    &:active,
+    &:focus
+      all: unset
+
+

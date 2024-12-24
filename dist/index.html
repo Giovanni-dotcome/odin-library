@@ -7,6 +7,33 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
+    <div class="hidden add-book-page">
+        <div class="card add-book-form">
+            <div class="details">
+                <label for="author"></label>
+                <input type="text" name="author" id="author" placeholder="Author">
+                <label for="title"></label>
+                <input type="text" name="title" id="title" placeholder="Title">
+                <label for="pages"></label>
+                <input type="number" name="pages" id="pages" placeholder="Pages">
+            </div>
+            <div class="progress">
+                <label class="container">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                    Read
+                </label>
+                <label for="pagesRead"></label>
+                <input type="number" name="pagesRead" id="pagesRead" placeholder="Pages Read">
+            </div>
+            <div class="actions">
+                <a class="remove-book-btn"><img src="./public/minus-circle.svg" alt="Remove Book Icon"></a>
+                <a class="add-book-btn"><img src="./public/check-circle.svg" alt="Completed Book Icon"></a>
+            </div>
+        </div>
+        <div class="add-book-background">
+        </div>
+    </div>
     <header>
         <h1>Odin - Web Library</h1>
     </header>
@@ -101,61 +128,10 @@
                 <a><img src="./public/check-circle.svg" alt="Completed Book Icon"></a>
             </div>
         </div>
-        <div class="card">
-            <div class="details">
-                <h3>Author</h3>
-                <h2>Title</h2>
-            </div>
-            <div class="progress">
-                <h3>Progress</h3>
-                <div class="progress-bar"></div>
-                <div class="pages">
-                    <h4>200/300 pages</h4>
-                    <h4>75%</h4>
-                </div>
-            </div>
-            <div class="actions">
-                <a><img src="./public/minus-circle.svg" alt="Remove Book Icon"></a>
-                <a><img src="./public/check-circle.svg" alt="Completed Book Icon"></a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="details">
-                <h3>Author</h3>
-                <h2>Title</h2>
-            </div>
-            <div class="progress">
-                <h3>Progress</h3>
-                <div class="progress-bar"></div>
-                <div class="pages">
-                    <h4>200/300 pages</h4>
-                    <h4>75%</h4>
-                </div>
-            </div>
-            <div class="actions">
-                <a><img src="./public/minus-circle.svg" alt="Remove Book Icon"></a>
-                <a><img src="./public/check-circle.svg" alt="Completed Book Icon"></a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="details">
-                <h3>Author</h3>
-                <h2>Title</h2>
-            </div>
-            <div class="progress">
-                <h3>Progress</h3>
-                <div class="progress-bar"></div>
-                <div class="pages">
-                    <h4>200/300 pages</h4>
-                    <h4>75%</h4>
-                </div>
-            </div>
-            <div class="actions">
-                <a><img src="./public/minus-circle.svg" alt="Remove Book Icon"></a>
-                <a><img src="./public/check-circle.svg" alt="Completed Book Icon"></a>
-            </div>
+        <div class="card add-book-card">
+            <img src="./public/plus-circle.svg" alt="Add Icon">
         </div>
     </main>
-    <script src="./index.js"></script>
+    <script src="./index.js" defer></script>
 </body>
 </html>

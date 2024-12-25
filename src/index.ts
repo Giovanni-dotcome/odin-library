@@ -26,6 +26,15 @@ class Library {
         }
         this.display(); // Re-render the library after removing the book
     };
+    public updatePagesRead(pages: number, id: number): void {
+        const bookToUpdate = this.books.find(book => book.id === id)
+        if (bookToUpdate) {
+            if (pages > bookToUpdate.pages)
+                pages = bookToUpdate.pages
+            bookToUpdate.pagesRead = pages
+        }
+        this.display()
+    }
 
     public completeBook(id: number): void {
         const newbook = this.books.find(book => book.id === id)
@@ -57,7 +66,7 @@ class Library {
                         </div>
                         <div class="pages">
                             
-                            <h4><input type="number" name="pagesRead" id="pagesRead" placeholder="Pages Read" value="${book.pagesRead || 0}">/${book.pages} pages</h4>
+                            <h4><input type="number" name="pagesRead" class="pagesReadUpdate" placeholder="Pages Read" value="${book.pagesRead || 0}">/${book.pages} pages</h4>
                             <h4>${percentageRead}%</h4>
                         </div>
                     </div>
@@ -73,7 +82,7 @@ class Library {
         // Add the "add book" card
         const addBookCardHTML = `
             <div class="card add-book-card">
-                <img src="./public/plus-circle.svg" alt="Add Icon">
+                <img src="../dist/public/plus-circle.svg" alt="Add Icon">
             </div>
         `;
         libraryHtml.innerHTML += addBookCardHTML;
@@ -100,6 +109,20 @@ class Library {
             })
         })
 
+
+        const pagesReadUpdates = document.querySelectorAll('.pagesReadUpdate')
+        pagesReadUpdates.forEach(element => {
+            element.addEventListener('keydown', event => {
+                if ((event as KeyboardEvent).key === 'Enter')
+                    (element as HTMLInputElement).blur()
+            })
+            element.addEventListener('blur', event => {
+                const card = ((event.target as HTMLElement).closest('.card') as HTMLElement);
+                const id = Number(card.id)
+                const pages = Number((event.target as HTMLInputElement).value);
+                this.updatePagesRead(pages, id)
+            })
+        });
 
         const pagesReadInput = document.querySelector('#pagesRead') as HTMLElement;
         const addBookCard = document.querySelector('.add-book-card') as HTMLElement;
@@ -142,6 +165,3 @@ class Library {
 const lib: Library = new Library();
 lib.addBook("Moby Dick", "Herman Melville", 500, false, 50);
 lib.addBook("Le Vite dei Cesari", "Svetonio", 350, false, 70);
-
-
-lib.display();

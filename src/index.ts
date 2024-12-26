@@ -146,6 +146,7 @@ function toggleScroll() {
 function closeBookWindow() {
     toggleScroll();
     toggleHide(addBookPage);
+    pagesReadInput.classList.add('hidden')
     form?.reset()
 }
 const pagesReadInput = document.querySelector('#pagesRead') as HTMLElement;
@@ -177,3 +178,4 @@ read?.addEventListener('click', () => {
 });
 
 const lib: Library = new Library();
+lib.display()

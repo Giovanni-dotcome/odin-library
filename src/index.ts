@@ -45,7 +45,7 @@ class Library {
 
     display(): void {
         const libraryHtml = document.querySelector(`.library`) as HTMLElement;
-        libraryHtml.innerHTML = ''; // Clear existing content
+        libraryHtml.innerHTML = '';
 
         this.books.forEach((book) => {
             const percentageRead = Math.round(
@@ -90,8 +90,8 @@ class Library {
             btn.addEventListener('click', (event) => {
                 const card = (event.target as HTMLElement).closest('.card');
                 if (card) {
-                    const id = parseInt(card.id); // Ensure id is a number
-                    this.removeBook(id); // Call removeBook with the correct id
+                    const id = parseInt(card.id);
+                    this.removeBook(id);
                 }
             });
         });

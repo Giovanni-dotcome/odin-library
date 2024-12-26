@@ -24,7 +24,7 @@ class Library {
         if (index !== -1) {
             this.books.splice(index, 1);
         }
-        this.display(); // Re-render the library after removing the book
+        this.display();
     };
     public updatePagesRead(pages: number, id: number): void {
         const bookToUpdate = this.books.find(book => book.id === id)
@@ -47,7 +47,6 @@ class Library {
         const libraryHtml = document.querySelector(`.library`) as HTMLElement;
         libraryHtml.innerHTML = ''; // Clear existing content
 
-        // Create and display books
         this.books.forEach((book) => {
             const percentageRead = Math.round(
                 (book.pagesRead ? book.pagesRead : 0) / book.pages * 100
@@ -79,7 +78,6 @@ class Library {
             libraryHtml.innerHTML += cardHtml;
         });
 
-        // Add the "add book" card
         const addBookCardHTML = `
             <div class="card add-book-card">
                 <img src="../dist/public/plus-circle.svg" alt="Add Icon">
@@ -87,7 +85,6 @@ class Library {
         `;
         libraryHtml.innerHTML += addBookCardHTML;
 
-        // Attach event listeners for remove buttons after the cards are rendered
         const removeBookBtns = document.querySelectorAll('.remove-book-btn');
         removeBookBtns.forEach((btn) => {
             btn.addEventListener('click', (event) => {
@@ -124,42 +121,43 @@ class Library {
             })
         });
 
-        const pagesReadInput = document.querySelector('#pagesRead') as HTMLElement;
         const addBookCard = document.querySelector('.add-book-card') as HTMLElement;
-        const addBookPage = document.querySelector('.add-book-page') as HTMLElement;
-        const closeAddBookWindow = document.querySelector('.close-add-book-window') as HTMLElement;
-        const body = document.querySelector('body') as HTMLElement;
-
-        const read = document.querySelector('input[type="checkbox"]');
-
-        read?.addEventListener('click', () => {
-            toggleHide(pagesReadInput);
-        });
-
-        function toggleScroll() {
-            if (body.classList.contains('no-scroll'))
-                body.classList.remove('no-scroll');
-            else
-                body.classList.add('no-scroll');
-        }
-
-        function toggleHide(element: HTMLElement) {
-            if (element?.classList.contains('hidden'))
-                element?.classList.remove('hidden');
-            else
-                element?.classList.add('hidden');
-        }
-
         addBookCard?.addEventListener('click', () => {
             toggleScroll();
             toggleHide(addBookPage);
         });
 
-        closeAddBookWindow?.addEventListener('click', () => {
-            toggleScroll();
-            toggleHide(addBookPage);
-        });
+
     }
+}
+const pagesReadInput = document.querySelector('#pagesRead') as HTMLElement;
+const body = document.querySelector('body') as HTMLElement;
+const closeAddBookWindow = document.querySelector('.close-add-book-window') as HTMLElement;
+const addBookPage = document.querySelector('.add-book-page') as HTMLElement;
+const read = document.querySelector('input[type="checkbox"]');
+
+closeAddBookWindow?.addEventListener('click', () => {
+    console.log('clicked')
+    toggleScroll();
+    toggleHide(addBookPage);
+});
+
+read?.addEventListener('click', () => {
+    toggleHide(pagesReadInput);
+});
+
+
+function toggleHide(element: HTMLElement) {
+    if (element?.classList.contains('hidden'))
+        element?.classList.remove('hidden');
+    else
+        element?.classList.add('hidden');
+}
+function toggleScroll() {
+    if (body.classList.contains('no-scroll'))
+        body.classList.remove('no-scroll');
+    else
+        body.classList.add('no-scroll');
 }
 
 const lib: Library = new Library();

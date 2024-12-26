@@ -160,13 +160,13 @@ form?.addEventListener('submit', (event) => {
     event.preventDefault()
     const formData = new FormData(form);
 
-    const author = formData.get('author') as string;
     const title = formData.get('title') as string;
+    const author = formData.get('author') as string;
     const pages = Number(formData.get('pages')) as number;
     const read = formData.has('read');
     const pagesRead = Number(formData.get('pagesRead')) as number;
 
-    lib.addBook(author, title, pages, read, pagesRead);
+    lib.addBook(title, author, pages, read, pagesRead);
 
     closeBookWindow()
 })

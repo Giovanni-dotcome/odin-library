@@ -9,27 +9,30 @@
 <body>
     <div class="hidden add-book-page">
         <div class="card add-book-form">
-            <div class="details">
-                <label for="author"></label>
-                <input type="text" name="author" id="author" placeholder="Author">
-                <label for="title"></label>
-                <input type="text" name="title" id="title" placeholder="Title">
-                <label for="pages"></label>
-                <input type="number" name="pages" id="pages" placeholder="Pages">
-            </div>
-            <div class="progress">
-                <label class="container">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                    Read
-                </label>
-                <label for="pagesRead"></label>
-                <input type="number" name="pagesRead" id="pagesRead" placeholder="Pages Read">
-            </div>
-            <div class="actions">
-                <a class="close-add-book-window"><img src="./public/minus-circle.svg" alt="Remove Book Icon"></a>
-                <a class="add-book-btn"><img src="./public/check-circle.svg" alt="Completed Book Icon"></a>
-            </div>
+            <form action="">
+                <div class="details">
+                    <label for="author"></label>
+                    <input type="text" name="author" id="author" placeholder="Author" required>
+                    <label for="title"></label>
+                    <input type="text" name="title" id="title" placeholder="Title" required>
+                    <label for="pages"></label>
+                    <input type="number" name="pages" id="pages" placeholder="Pages" required>
+                </div>
+                <div class="progress">
+                    <label class="container">
+                        <input type="checkbox" name="read" id="read" checked="checked">
+                        Read
+                    </label>
+                    <label for="pagesRead"></label>
+                    <input type="number" name="pagesRead" id="pagesRead" placeholder="Pages Read">
+                </div>
+                <div class="actions">
+                    <a class="close-add-book-window"><img src="./public/minus-circle.svg" alt="Remove Book Icon"></a>
+                    <button>
+                        <a class="add-book-btn"><img src="./public/check-circle.svg" alt="Completed Book Icon"></a>
+                    </button>
+                </div>
+            </form>
         </div>
         <div class="add-book-background">
         </div>

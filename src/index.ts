@@ -130,22 +130,6 @@ class Library {
 
     }
 }
-const pagesReadInput = document.querySelector('#pagesRead') as HTMLElement;
-const body = document.querySelector('body') as HTMLElement;
-const closeAddBookWindow = document.querySelector('.close-add-book-window') as HTMLElement;
-const addBookPage = document.querySelector('.add-book-page') as HTMLElement;
-const read = document.querySelector('input[type="checkbox"]');
-
-closeAddBookWindow?.addEventListener('click', () => {
-    console.log('clicked')
-    toggleScroll();
-    toggleHide(addBookPage);
-});
-
-read?.addEventListener('click', () => {
-    toggleHide(pagesReadInput);
-});
-
 
 function toggleHide(element: HTMLElement) {
     if (element?.classList.contains('hidden'))
@@ -159,7 +143,37 @@ function toggleScroll() {
     else
         body.classList.add('no-scroll');
 }
+function closeBookWindow() {
+    toggleScroll();
+    toggleHide(addBookPage);
+    form?.reset()
+}
+const pagesReadInput = document.querySelector('#pagesRead') as HTMLElement;
+const body = document.querySelector('body') as HTMLElement;
+const closeAddBookWindow = document.querySelector('.close-add-book-window') as HTMLElement;
+const addBookPage = document.querySelector('.add-book-page') as HTMLElement;
+const read = document.querySelector('input[type="checkbox"]');
+const form = document.querySelector('form');
+
+form?.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const formData = new FormData(form);
+
+    const author = formData.get('author') as string;
+    const title = formData.get('title') as string;
+    const pages = Number(formData.get('pages')) as number;
+    const read = formData.has('read');
+    const pagesRead = Number(formData.get('pagesRead')) as number;
+
+    lib.addBook(author, title, pages, read, pagesRead);
+
+    closeBookWindow()
+})
+closeAddBookWindow?.addEventListener('click', () => {
+    closeBookWindow()
+});
+read?.addEventListener('click', () => {
+    toggleHide(pagesReadInput);
+});
 
 const lib: Library = new Library();
-lib.addBook("Moby Dick", "Herman Melville", 500, false, 50);
-lib.addBook("Le Vite dei Cesari", "Svetonio", 350, false, 70);

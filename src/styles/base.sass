@@ -53,15 +53,24 @@ img
 .hidden
   visibility: hidden
 
-input
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25)
-  border-radius: 15px
-  border: none
-  [type="text"]
-    all: unset
-    &:active,
-    &:focus
+label
+  font-size: 1em
+  color: var(--primary)
+
+.card
+  input
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25)
+    border-radius: 0
+    border: none
+    font-size: 1em
+    color: var(--primary)
+    border-bottom: 1px solid var(--primary)
+    [type="text"]
       all: unset
+      &:active,
+      &:focus
+        outline: none
+        all: unset
 
 .add-book-btn
   all: unset
